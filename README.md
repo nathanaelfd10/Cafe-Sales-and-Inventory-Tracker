@@ -1,3 +1,3 @@
-# janji-manis-app
+# Fontaine's Finest Tavern
 
-A website about a hypothetical, fully fictional cafe named "Cafe Janji Manis" located somewhere in France.
+A website about a hypothetical, fully fictional cafe named "Fontaine's Finest Tavern" located somewhere in France.
