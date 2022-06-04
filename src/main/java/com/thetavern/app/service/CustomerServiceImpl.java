@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import com.thetavern.app.dao.CustomerDAO;
 import com.thetavern.app.entity.Customer;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 @Service
 public class CustomerServiceImpl implements CustomerService {
 

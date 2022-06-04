@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>Home to the finest eatery in Fontaine!</h1>
+	<h2 th:text="'It\'s ' + ${theDate} + ', what a perfect time to eat!'" />
+	<h3 th:text="'Employee of the day: ' + ${theEmployee}" />
+
+</body>
+</html>

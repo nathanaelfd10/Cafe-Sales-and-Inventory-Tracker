@@ -9,6 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.thetavern.app.dao.EmployeeDAO;
 import com.thetavern.app.entity.Employee;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 

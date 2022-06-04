@@ -5,6 +5,10 @@ import java.util.List;
 import com.thetavern.app.entity.Employee;
 import com.thetavern.app.entity.Menu;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 public interface EmployeeDAO {
 
 	public List<Employee> findAll();

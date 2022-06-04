@@ -12,6 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.thetavern.app.entity.Employee;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 @Repository
 public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 

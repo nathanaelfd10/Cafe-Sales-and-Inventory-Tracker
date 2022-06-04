@@ -9,6 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.thetavern.app.dao.MenuDAO;
 import com.thetavern.app.entity.Menu;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 @Service
 public class MenuServiceImpl implements MenuService {
 

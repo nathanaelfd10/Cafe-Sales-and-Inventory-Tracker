@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.thetavern.app.entity.Menu;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 @Repository
 public class MenuDAOHibernateImpl implements MenuDAO {
 	

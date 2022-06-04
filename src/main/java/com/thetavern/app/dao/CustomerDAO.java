@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.thetavern.app.entity.Customer;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 public interface CustomerDAO {
 
 	public List<Customer> findAll();

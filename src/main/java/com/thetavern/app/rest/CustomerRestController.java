@@ -16,6 +16,10 @@ import com.thetavern.app.entity.Customer;
 import com.thetavern.app.entity.Employee;
 import com.thetavern.app.service.CustomerService;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerRestController {

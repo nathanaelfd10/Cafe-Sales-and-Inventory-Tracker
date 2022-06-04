@@ -19,6 +19,10 @@ import com.thetavern.app.entity.Menu;
 import com.thetavern.app.service.EmployeeService;
 import com.thetavern.app.service.MenuService;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 @RestController
 @RequestMapping("/api/menus")
 public class MenuRestController {

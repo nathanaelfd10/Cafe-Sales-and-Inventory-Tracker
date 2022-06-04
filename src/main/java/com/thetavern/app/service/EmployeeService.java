@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.thetavern.app.entity.Employee;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 public interface EmployeeService {
 
 	public List<Employee> findAll();

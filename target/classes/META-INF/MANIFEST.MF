@@ -1,6 +1,9 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 11
+Built-By: based
+Build-Jdk: 11.0.13
 Implementation-Title: janjimanis.app
 Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.janjimanis
+Implementation-URL: https://spring.io/projects/spring-boot/ingenuity.app
 Created-By: Maven Integration for Eclipse
 

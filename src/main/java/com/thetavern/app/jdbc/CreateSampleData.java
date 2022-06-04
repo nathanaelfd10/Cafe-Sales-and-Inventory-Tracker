@@ -8,6 +8,10 @@ import com.thetavern.app.entity.Customer;
 import com.thetavern.app.entity.Employee;
 import com.thetavern.app.entity.Menu;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 public class CreateSampleData {
 	
 	public static void main(String[] args) {

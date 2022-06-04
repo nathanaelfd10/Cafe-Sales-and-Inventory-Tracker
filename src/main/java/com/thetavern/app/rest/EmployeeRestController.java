@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.thetavern.app.entity.Employee;
 import com.thetavern.app.service.EmployeeService;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeRestController {

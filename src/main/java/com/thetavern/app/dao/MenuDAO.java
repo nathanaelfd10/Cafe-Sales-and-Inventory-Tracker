@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.thetavern.app.entity.Menu;
 
+/**
+ * @author Fernando Nathanael
+ *
+ */
 public interface MenuDAO {
 	
 	public List<Menu> findAll();
