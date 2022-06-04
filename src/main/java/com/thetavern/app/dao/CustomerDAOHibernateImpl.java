@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.thetavern.app.entity.Customer;
-import com.thetavern.app.entity.Employee;
 
 /**
  * @author Fernando Nathanael

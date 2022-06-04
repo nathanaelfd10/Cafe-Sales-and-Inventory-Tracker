@@ -25,6 +25,7 @@ public class TheTavernSecurityConfig extends WebSecurityConfigurerAdapter {
 		// add our users for in memory authentication
 		UserBuilder users = User.withDefaultPasswordEncoder();
 		
+		// for testing purposes only
 		auth.inMemoryAuthentication()
 			.withUser(users.username("john").password("thebesttavern").roles("EMPLOYEE"))
 			.withUser(users.username("mary").password("thebesttavern").roles("MANAGER"))

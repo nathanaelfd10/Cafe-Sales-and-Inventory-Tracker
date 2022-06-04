@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.thetavern.app.entity.Customer;
-import com.thetavern.app.entity.Employee;
 import com.thetavern.app.service.CustomerService;
 
 /**

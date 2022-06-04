@@ -13,7 +13,7 @@ import com.thetavern.app.service.EmployeeService;
  *
  */
 @Controller
-@RequestMapping("/thetavern")
+@RequestMapping("/")
 public class MainController {
 
 	private EmployeeService employeeService;
@@ -22,15 +22,20 @@ public class MainController {
 	public MainController(EmployeeService theEmployeeService) {
 		employeeService = theEmployeeService;
 	}
-
-	@GetMapping("/asdf")
+	
+	@GetMapping("/")
 	public String showHome() {
-		return "index";
+		return "template";
 	}
-
-	@GetMapping("/admin/employees")
-	public String showEmployeesTable() {
-		return "employees";
+	
+	@GetMapping("/login")
+	public String showLoginPage() {
+		return "login";
+	}
+	
+	@GetMapping("/about")
+	public String showAbout() {
+		return "about";
 	}
 
 	@GetMapping("/helloworld")
