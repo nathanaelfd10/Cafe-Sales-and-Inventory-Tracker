@@ -1,12 +1,12 @@
-package com.janjimanis.app.service;
+package com.thetavern.app.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.janjimanis.app.dao.CustomerDAO;
-import com.janjimanis.app.entity.Customer;
+import com.thetavern.app.dao.CustomerDAO;
+import com.thetavern.app.entity.Customer;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {

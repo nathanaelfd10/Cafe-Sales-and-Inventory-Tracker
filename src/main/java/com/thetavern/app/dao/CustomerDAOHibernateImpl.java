@@ -1,4 +1,4 @@
-package com.janjimanis.app.dao;
+package com.thetavern.app.dao;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.janjimanis.app.entity.Customer;
-import com.janjimanis.app.entity.Employee;
+import com.thetavern.app.entity.Customer;
+import com.thetavern.app.entity.Employee;
 
 @Repository
 public class CustomerDAOHibernateImpl implements CustomerDAO {

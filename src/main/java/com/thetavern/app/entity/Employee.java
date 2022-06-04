@@ -1,4 +1,4 @@
-package com.janjimanis.app.entity;
+package com.thetavern.app.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

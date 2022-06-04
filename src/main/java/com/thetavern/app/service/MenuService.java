@@ -1,8 +1,8 @@
-package com.janjimanis.app.service;
+package com.thetavern.app.service;
 
 import java.util.List;
 
-import com.janjimanis.app.entity.Menu;
+import com.thetavern.app.entity.Menu;
 
 public interface MenuService {
 

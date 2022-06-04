@@ -1,8 +1,8 @@
-package com.janjimanis.app.service;
+package com.thetavern.app.service;
 
 import java.util.List;
 
-import com.janjimanis.app.entity.Customer;
+import com.thetavern.app.entity.Customer;
 
 public interface CustomerService {
 	

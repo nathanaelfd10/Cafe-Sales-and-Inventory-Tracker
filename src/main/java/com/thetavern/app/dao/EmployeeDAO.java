@@ -1,9 +1,9 @@
-package com.janjimanis.app.dao;
+package com.thetavern.app.dao;
 
 import java.util.List;
 
-import com.janjimanis.app.entity.Employee;
-import com.janjimanis.app.entity.Menu;
+import com.thetavern.app.entity.Employee;
+import com.thetavern.app.entity.Menu;
 
 public interface EmployeeDAO {
 

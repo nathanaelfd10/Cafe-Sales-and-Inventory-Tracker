@@ -1,4 +1,4 @@
-package com.janjimanis.app.dao;
+package com.thetavern.app.dao;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-import com.janjimanis.app.entity.Menu;
+import com.thetavern.app.entity.Menu;
 
 @Repository
 public class MenuDAOHibernateImpl implements MenuDAO {

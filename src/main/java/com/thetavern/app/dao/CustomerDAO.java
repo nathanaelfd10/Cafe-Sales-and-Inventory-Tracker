@@ -1,8 +1,8 @@
-package com.janjimanis.app.dao;
+package com.thetavern.app.dao;
 
 import java.util.List;
 
-import com.janjimanis.app.entity.Customer;
+import com.thetavern.app.entity.Customer;
 
 public interface CustomerDAO {
 

@@ -1,12 +1,12 @@
-package com.janjimanis.app.jdbc;
+package com.thetavern.app.jdbc;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.janjimanis.app.entity.Customer;
-import com.janjimanis.app.entity.Employee;
-import com.janjimanis.app.entity.Menu;
+import com.thetavern.app.entity.Customer;
+import com.thetavern.app.entity.Employee;
+import com.thetavern.app.entity.Menu;
 
 public class CreateSampleData {
 	
