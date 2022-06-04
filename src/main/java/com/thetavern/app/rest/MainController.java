@@ -14,16 +14,16 @@ import com.thetavern.app.service.EmployeeService;
  */
 @Controller
 @RequestMapping("/thetavern")
-public class HomeController {
+public class MainController {
 
 	private EmployeeService employeeService;
 
 	@Autowired
-	public HomeController(EmployeeService theEmployeeService) {
+	public MainController(EmployeeService theEmployeeService) {
 		employeeService = theEmployeeService;
 	}
 
-	@GetMapping("")
+	@GetMapping("/asdf")
 	public String showHome() {
 		return "index";
 	}
