@@ -1,4 +1,4 @@
-package com.thetavern.app.rest;
+package com.thetavern.app.controller.rest;
 
 import java.util.List;
 

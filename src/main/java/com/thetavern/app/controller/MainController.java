@@ -1,4 +1,4 @@
-package com.thetavern.app.rest;
+package com.thetavern.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
