@@ -167,6 +167,7 @@
                                         <th>Home Address</th>
                                         <th>Pay/hour</th>
                                         <th>Permanent Officer</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -177,6 +178,10 @@
                                 		<td th:text="${theEmployee.homeAddress}" />
                                 		<td th:text="${theEmployee.payHour}" />
                                 		<td th:text="${theEmployee.permanentOfficer}" />
+                            			<td class="text-end">
+                                            <a href="" class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></a>
+                                            <a href="" class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></a>
+                                        </td>
                                 	</tr>
                                 </tbody>
                             </table>

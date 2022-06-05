@@ -30,9 +30,9 @@ public class MainController {
 	
 	@GetMapping("/login")
 	public String showLoginPage() {
-		return "login";
+		return "login-page";
 	}
-	
+
 	@GetMapping("/about")
 	public String showAbout() {
 		return "about";

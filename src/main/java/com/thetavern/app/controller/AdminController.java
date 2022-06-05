@@ -1,6 +1,5 @@
 package com.thetavern.app.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,7 @@ public class AdminController {
 		
 		theModel.addAttribute("employees", employees);
 		
-		return "employees";
+		return "admin/employees";
 		
 	}
 

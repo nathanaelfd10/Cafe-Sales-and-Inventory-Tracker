@@ -31,8 +31,10 @@ public class CreateSampleData {
 		try {
 			// creates object
 			System.out.println("Creating new Employee object..");
-			Employee tempEmployee0 = new Employee("Patricia", "1914-12-23", "F", "Jl Kelapa", "99999999", "Admin", true);
-			Employee tempEmployee1 = new Employee("Fernando", "1913-10-10", "M", "Jl H Kaiman", "1000000", "Cashier", true);
+			Employee tempEmployee1 = new Employee("Patricia", "1914-12-23", "F", "Jl Kelapa", "99999999", "Admin", true);
+			Employee tempEmployee2 = new Employee("Fernando", "1913-10-10", "M", "Jl H Kaiman", "1000000", "Cashier", true);
+			Employee tempEmployee3 = new Employee("Matthew", "2001-01-01", "F", "Jl Kelapa", "99999999", "Admin", true);
+			Employee tempEmployee4 = new Employee("Ferdi", "2001-02-02", "M", "Jl H Kaiman", "1000000", "Cashier", true);
 			Customer tempCustomer1 = new Customer("patricia", "patricia123", "2001-12-23", true);
 			Customer tempCustomer2 = new Customer("joni", "cafemantul123", "2001-01-01", true);
 			Customer tempCustomer3 = new Customer("udin", "123456", "2001-02-01", true);
@@ -45,8 +47,11 @@ public class CreateSampleData {
 			session.beginTransaction();
 			
 			// saves transaction
-			session.save(tempEmployee0);
 			session.save(tempEmployee1);
+			session.save(tempEmployee2);
+			session.save(tempEmployee3);
+			session.save(tempEmployee4);
+			
 			session.save(tempCustomer1);
 			session.save(tempCustomer2);
 			session.save(tempCustomer3);
