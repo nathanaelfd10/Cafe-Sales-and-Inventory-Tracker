@@ -1,5 +1,6 @@
 package com.thetavern.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class AdminController {
 		
 		List<Employee> employees = employeeService.findAll();
 		
-		theModel.addAttribute("employees", employees);
+		theModel.addAttribute("theEmployees", employees);
 		
 		return "employees";
 		
