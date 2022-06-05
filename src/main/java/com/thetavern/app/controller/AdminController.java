@@ -38,7 +38,7 @@ public class AdminController {
 		
 		theModel.addAttribute("employees", employees);
 		
-		return "admin/employees";
+		return "admin/employee-management";
 		
 	}
 
