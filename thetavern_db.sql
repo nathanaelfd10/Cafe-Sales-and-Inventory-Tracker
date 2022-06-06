@@ -1,12 +1,12 @@
-CREATE DATABASE  IF NOT EXISTS `janji_manis_directory`;
-USE `janji_manis_directory`;
+CREATE DATABASE  IF NOT EXISTS `the_tavern_directory`;
+USE `the_tavern_directory`;
 
 DROP TABLE IF EXISTS `employee`;
 
 CREATE TABLE `employee` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) DEFAULT NULL,
-    `date_of_birth` DATETIME DEFAULT NULL,
+    `date_of_birth` DATE DEFAULT NULL,
 	`sex` CHAR(1) DEFAULT NULL,
     `email` VARCHAR(100) DEFAULT NULL,
     `home_address` VARCHAR(50) DEFAULT NULL,

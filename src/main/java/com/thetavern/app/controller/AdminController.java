@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thetavern.app.entity.Employee;
 import com.thetavern.app.service.EmployeeService;
@@ -27,44 +28,72 @@ public class AdminController {
 	public AdminController(EmployeeService theEmployeeService) {
 		employeeService = theEmployeeService;
 	}
-	
-	@GetMapping({"", "/"})
+
+	@GetMapping({ "", "/" })
 	public String redirectToDashboard() {
 		return "redirect:/admin/dashboard";
 	}
-	
+
 	@GetMapping("/dashboard")
 	public String showAdminPanel() {
 		return "dashboard";
 	}
-	
+
 	@GetMapping("/employees")
 	public String showEmployees(Model theModel) {
-		
+
 		List<Employee> employees = employeeService.findAll();
-		
+
 		theModel.addAttribute("employees", employees);
-		
+
 		return "admin/employee-management/table";
-		
+
 	}
-	
+
 	@GetMapping("/employees/add")
-	public String addNewEmployee () {
-		
+	public String addNewEmployee(Model theModel) {
+
+		// model attribute to bind form data
+		Employee theEmployee = new Employee();
+
+		theModel.addAttribute("employee", theEmployee);
+
 		return "admin/employee-management/add-form";
 	}
-	
-	@PostMapping("/save")
-	public String saveEmployee(@ModelAttribute("employee") Employee theEmployee) {
-		
-		employeeService.save(theEmployee);
-		
-		return "redirect:admin/employee-management";
-	
+
+	@GetMapping("/employees/update")
+	public String addNewEmployee(@RequestParam("id") int theId, Model theModel) {
+
+		// get employee data by id
+		Employee theEmployee = employeeService.findById(theId);
+
+		// set employee as a model attribute to pre-populate the form
+		theModel.addAttribute("employee", theEmployee);
+
+		// send over to the form
+		return "admin/employee-management/update-form";
 	}
-	
-	
-	
+
+	@PostMapping("/employees/save")
+	public String saveEmployee(Employee theEmployee) {
+
+		// Capitalizes first letter of first word
+		String employeeName = theEmployee.getName();
+
+		theEmployee.setName(employeeName.substring(0, 1).toUpperCase() + employeeName.substring(1));
+
+		employeeService.save(theEmployee);
+
+		return "redirect:/admin/employees";
+
+	}
+
+	@GetMapping("/employees/delete")
+	public String deleteEmployee(@RequestParam("id") int theId) {
+
+		employeeService.deleteById(theId);
+
+		return "redirect:/admin/employees";
+	}
 
 }

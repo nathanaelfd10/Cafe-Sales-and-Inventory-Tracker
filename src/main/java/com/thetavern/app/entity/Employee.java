@@ -12,49 +12,53 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="employee")
+@Table(name = "employee")
 public class Employee {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="date_of_birth")
+
+	@Column(name = "date_of_birth")
 	private String dateOfBirth;
-	
-	@Column(name="sex")
+
+	@Column(name = "sex")
 	private String sex;
-	
-	@Column(name="home_address")
+
+	@Column(name = "email")
+	private String email;
+
+	@Column(name = "home_address")
 	private String homeAddress;
-	
-	@Column(name="pay_hour")
+
+	@Column(name = "pay_hour")
 	private String payHour;
-	
-	@Column(name="role")
+
+	@Column(name = "role")
 	private String role;
-	
-	@Column(name="permanent_officer")
+
+	@Column(name = "permanent_officer")
 	private Boolean permanentOfficer;
-	
+
 	public Employee() {
-		
+
 	}
 	
 	/* To-dos:
-	 * [] Add email
+	 * [DONE] Add email field
 	 */
-	
-	public Employee(String name, String dateOfBirth, String sex, String homeAddress, String payHour, String role,
-			Boolean permanentOfficer) {
+
+	public Employee(String name, String dateOfBirth, String sex, String email, String homeAddress, String payHour,
+			String role, Boolean permanentOfficer) {
 		super();
 		this.name = name;
 		this.dateOfBirth = dateOfBirth;
 		this.sex = sex;
+		this.email = email;
 		this.homeAddress = homeAddress;
 		this.payHour = payHour;
 		this.role = role;
@@ -93,6 +97,14 @@ public class Employee {
 		this.sex = sex;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getHomeAddress() {
 		return homeAddress;
 	}
@@ -127,12 +139,9 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", dateOfBirth=" + dateOfBirth + ", sex=" + sex
-				+ ", homeAddress=" + homeAddress + ", payHour=" + payHour + ", role=" + role + ", permanentOfficer="
-				+ permanentOfficer + "]";
+		return "Employee [id=" + id + ", name=" + name + ", dateOfBirth=" + dateOfBirth + ", sex=" + sex + ", email="
+				+ email + ", homeAddress=" + homeAddress + ", payHour=" + payHour + ", role=" + role
+				+ ", permanentOfficer=" + permanentOfficer + "]";
 	}
-	
-	 
 
-	
 }

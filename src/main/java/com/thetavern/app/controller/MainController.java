@@ -35,7 +35,7 @@ public class MainController {
 
 	@GetMapping("/about")
 	public String showAbout() {
-		return "unnuabout";
+		return "about";
 	}
 
 	@GetMapping("/helloworld")
@@ -44,7 +44,7 @@ public class MainController {
 		theModel.addAttribute("theDate", new java.util.Date());
 		theModel.addAttribute("theEmployee", employeeService.findById(1).getName());
 
-		return "helloworld";
+		return "unused/helloworld";
 	}
 
 }
