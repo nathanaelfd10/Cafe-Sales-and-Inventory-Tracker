@@ -25,7 +25,7 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String showHome() {
-		return "template";
+		return "about";
 	}
 	
 	@GetMapping("/login")
@@ -35,7 +35,7 @@ public class MainController {
 
 	@GetMapping("/about")
 	public String showAbout() {
-		return "about";
+		return "unnuabout";
 	}
 
 	@GetMapping("/helloworld")

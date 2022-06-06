@@ -8,6 +8,7 @@ CREATE TABLE `employee` (
     `name` VARCHAR(50) DEFAULT NULL,
     `date_of_birth` DATETIME DEFAULT NULL,
 	`sex` CHAR(1) DEFAULT NULL,
+    `email` VARCHAR(100) DEFAULT NULL,
     `home_address` VARCHAR(50) DEFAULT NULL,
     `pay_hour` INT(20) DEFAULT NULL,
     `role` VARCHAR(50) DEFAULT NULL,
@@ -15,12 +16,45 @@ CREATE TABLE `employee` (
     PRIMARY KEY (`id`)
 );
 
+DROP TABLE IF EXISTS `authorities`;
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users`(
+	`username` varchar(50) NOT NULL,
+    `password` char(68) NOT NULL,
+    `enabled` tinyint(1) NOT NULL,
+    PRIMARY KEY (`username`)
+);
+
+INSERT INTO `users`
+VALUES 
+('thetavern','{bcrypt}$2a$10$h35W41KLLqTbT/3Ve7KrE.gz/iaFBKrAeOEGV0sUjtOutmrAdxEAK', 1),
+('noxfl','{bcrypt}$2a$10$h35W41KLLqTbT/3Ve7KrE.gz/iaFBKrAeOEGV0sUjtOutmrAdxEAK',1),
+('john','{noop}test123',1),
+('mary','{noop}test123',1),
+('patricia','{bcrypt}$2a$10$h35W41KLLqTbT/3Ve7KrE.gz/iaFBKrAeOEGV0sUjtOutmrAdxEAK',1);
+
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) DEFAULT NULL,
     PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `authorities` (
+	`username` varchar(50) NOT NULL,
+    `authority` varchar(50) NOT NULL,
+    UNIQUE KEY `authorities_idx_1` (`username`, `authority`),
+    CONSTRAINT `authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+);
+
+INSERT INTO `authorities`
+VALUES
+('thetavern','ROLE_ADMIN'),
+('noxfl','ROLE_EMPLOYEE'),
+('john','ROLE_EMPLOYEE'),
+('mary','ROLE_EMPLOYEE'),
+('patricia','ROLE_EMPLOYEE'),
+('patricia','ROLE_ADMIN');
 
 DROP TABLE IF EXISTS `transaction_detail`;
 DROP TABLE IF EXISTS `transaction`;
@@ -75,11 +109,9 @@ CREATE TABLE `transaction` (
 	FOREIGN KEY (`cust_id`) REFERENCES customer(`id`)
 );
 
-
 CREATE TABLE `transaction_detail` (
 	`transaction_id` INT NOT NULL,
     `menu_id` INT NOT NULL,
-    
 	FOREIGN KEY (`transaction_id`) REFERENCES transaction(`id`),
 	FOREIGN KEY (`menu_id`) REFERENCES menu(`id`)
 )

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.thetavern.app.entity.Employee;
@@ -26,7 +28,12 @@ public class AdminController {
 		employeeService = theEmployeeService;
 	}
 	
-	@GetMapping("/")
+	@GetMapping({"", "/"})
+	public String redirectToDashboard() {
+		return "redirect:/admin/dashboard";
+	}
+	
+	@GetMapping("/dashboard")
 	public String showAdminPanel() {
 		return "dashboard";
 	}
@@ -38,8 +45,26 @@ public class AdminController {
 		
 		theModel.addAttribute("employees", employees);
 		
-		return "admin/employee-management";
+		return "admin/employee-management/table";
 		
 	}
+	
+	@GetMapping("/employees/add")
+	public String addNewEmployee () {
+		
+		return "admin/employee-management/add-form";
+	}
+	
+	@PostMapping("/save")
+	public String saveEmployee(@ModelAttribute("employee") Employee theEmployee) {
+		
+		employeeService.save(theEmployee);
+		
+		return "redirect:admin/employee-management";
+	
+	}
+	
+	
+	
 
 }

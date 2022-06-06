@@ -44,7 +44,11 @@ public class Employee {
 	public Employee() {
 		
 	}
-
+	
+	/* To-dos:
+	 * [] Add email
+	 */
+	
 	public Employee(String name, String dateOfBirth, String sex, String homeAddress, String payHour, String role,
 			Boolean permanentOfficer) {
 		super();
