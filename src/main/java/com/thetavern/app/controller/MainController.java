@@ -25,7 +25,7 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String showHome() {
-		return "about";
+		return "index";
 	}
 	
 	@GetMapping("/login")
