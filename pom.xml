@@ -7,8 +7,8 @@
 		<version>2.7.0</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.janjimanis</groupId>
-	<artifactId>ingenuity.app</artifactId>
+	<groupId>com.thetavern</groupId>
+	<artifactId>tavern.app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>janjimanis.app</name>
 	<description>A website about a hypothetical, fully fictional cafe named "Cafe Janji Manis"</description>

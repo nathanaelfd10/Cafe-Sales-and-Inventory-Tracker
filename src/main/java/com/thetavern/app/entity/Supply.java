@@ -96,6 +96,12 @@ public class Supply {
 		this.unit = unit;
 	}
 
+	@Override
+	public String toString() {
+		return "Supply [id=" + id + ", name=" + name + ", desc=" + desc + ", price=" + price + ", stock=" + stock
+				+ ", unit=" + unit + "]";
+	}
+
 
 	
 

@@ -3,7 +3,7 @@ Built-By: based
 Build-Jdk: 11.0.13
 Implementation-Title: janjimanis.app
 Implementation-Version: 0.0.1-SNAPSHOT
-Implementation-Vendor-Id: com.janjimanis
-Implementation-URL: https://spring.io/projects/spring-boot/ingenuity.app
+Implementation-Vendor-Id: com.thetavern
+Implementation-URL: https://spring.io/projects/spring-boot/tavern.app
 Created-By: Maven Integration for Eclipse
 
