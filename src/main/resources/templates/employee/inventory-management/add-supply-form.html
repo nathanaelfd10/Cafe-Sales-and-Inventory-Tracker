@@ -160,38 +160,33 @@
                                 <div class="card-header">New Supply Item</div>
                                 <div class="card-body">
                                     <h5 class="card-title">Register new supply item.</h5>
-                                    <form accept-charset="utf-8" action="#" th:action="@{/supply-management/add-supply-form}"
+                                    <form accept-charset="utf-8" action="#" th:action="@{/employee/inventory-management/save-supply}"
                                     										th:object="${supply}" method="POST">
                                         <div class="mb-3">
                                             <label for="text" class="form-label">Item Name</label>
-                                            <input type="text" th:field="*{name}" name="employee-name" placeholder="Full Name" class="form-control" required>
+                                            <input type="text" th:field="*{name}" name="supply-name" placeholder="Item name" class="form-control" required>
                                         </div>
                                         
                                         <div class="mb-3">
-                                            <label for="dateofbirth" class="form-label">Description</label>
-                                            <input type="date" th:field="*{description}" placeholder="MM/DD/YYY" name="date-of-birth" class="form-control" required>
+                                            <label for="text" class="form-label">Description</label>
+                                            <input type="text" th:field="*{description}" name="date-of-birth" placeholder="Description" class="form-control" required>
                                         </div>
                                         
                                         <div class="mb-3">
                                             <label for="text" class="form-label">Price</label>
-                                            <select id="biological-sex" th:field="*{sex}" name="biological-sex" class="form-control" required>
-                                            	<option value="F" selected>Female</option>
-                                            	<option value="M">Male</option>
-                                            </select>
+        									<input type="number" th:field="*{price}" name="price" placeholder="Price" class="form-control" required>
                                         </div>
                                         
                                         <div class="mb-3">
                                             <label for="text" class="form-label">Stock</label>
-                                            <input type="email" th:field="*{email}" name="email" placeholder="Email" class="form-control" required>
+                                            <input type="number" th:field="*{stock}" name="email" placeholder="1" class="form-control" required>
                                         </div>
                                         
                                         <div class="mb-3">
                                             <label for="text" class="form-label">Unit</label>
-                                            <input type="text" th:field="*{homeAddress}" name="home-address" placeholder="Home Address" class="form-control" required>
+                                            <input type="text" th:field="*{unit}" name="Unit" placeholder="(Ex: kg, L)" class="form-control" required>
                                         </div>
                                        
-                                        
-                                        
                                         <div class="mb-3">
                                             <input type="submit" class="btn btn-primary">
                                         </div>
