@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.util.StringUtils;
 
-import com.thetavern.app.entity.Employee;
 import com.thetavern.app.entity.Menu;
 import com.thetavern.app.entity.Supply;
 import com.thetavern.app.service.MenuService;
