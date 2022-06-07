@@ -1,5 +1,6 @@
 package com.thetavern.app.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +40,13 @@ public class AdminController {
 	}
 
 	@GetMapping("/employees")
-	public String showEmployees(Model theModel) {
+	public String showEmployees(Model theModel, Principal principal) {
 
 		List<Employee> employees = employeeService.findAll();
-
+		String username = principal.getName();
+		
 		theModel.addAttribute("employees", employees);
+		theModel.addAttribute("username", username);
 
 		return "admin/employee-management/table";
 

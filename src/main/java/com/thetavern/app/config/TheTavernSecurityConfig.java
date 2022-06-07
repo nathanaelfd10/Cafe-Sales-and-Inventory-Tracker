@@ -42,7 +42,12 @@ public class TheTavernSecurityConfig extends WebSecurityConfigurerAdapter {
 		.formLogin()
 			.loginPage("/login")
 			.loginProcessingUrl("/authenticateTheUser")
-			.permitAll();		
+			.permitAll()
+		.and()
+			.logout().permitAll()
+			.logoutSuccessUrl("/login")
+		.and()
+			.exceptionHandling().accessDeniedPage("/access-denied");		
 	}
 
 }

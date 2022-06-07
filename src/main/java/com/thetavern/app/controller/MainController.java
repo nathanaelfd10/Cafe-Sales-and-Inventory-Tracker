@@ -37,6 +37,11 @@ public class MainController {
 	public String showAbout() {
 		return "about";
 	}
+	
+	@GetMapping("/access-denied")
+	public String showAccessDenied() {
+		return "error/403";
+	}
 
 	@GetMapping("/helloworld")
 	public String showHelloWorldPage(Model theModel) {

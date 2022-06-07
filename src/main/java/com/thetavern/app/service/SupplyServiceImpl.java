@@ -5,6 +5,9 @@ package com.thetavern.app.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.thetavern.app.dao.SupplyDAO;
 import com.thetavern.app.entity.Supply;
 
@@ -12,9 +15,15 @@ import com.thetavern.app.entity.Supply;
  * @author Fernando Nathanael
  *
  */
+@Service
 public class SupplyServiceImpl implements SupplyService {
 
 	private SupplyDAO supplyDAO;
+	
+	@Autowired
+	public SupplyServiceImpl(SupplyDAO theSupplyDAO) {
+		supplyDAO = theSupplyDAO;
+	}
 
 	@Override
 	public List<Supply> findAll() {

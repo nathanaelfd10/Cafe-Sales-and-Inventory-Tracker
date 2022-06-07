@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.thetavern.app.entity.Supply;
@@ -21,6 +22,11 @@ import com.thetavern.app.entity.Supply;
 public class SupplyDAOHibernateImpl implements SupplyDAO {
 	
 	private EntityManager entityManager;
+	
+	@Autowired
+	public SupplyDAOHibernateImpl(EntityManager theEntityManager) {
+		entityManager = theEntityManager;
+	}
 
 	@Override
 	public List<Supply> findAll() {
@@ -29,7 +35,7 @@ public class SupplyDAOHibernateImpl implements SupplyDAO {
 		Session currentSession = entityManager.unwrap(Session.class);
 		
 		// creates query
-		Query<Supply> theQuery = currentSession.createQuery("from supply", Supply.class);
+		Query<Supply> theQuery = currentSession.createQuery("from Supply", Supply.class);
 		
 		// gets all supplies
 		List<Supply> theSupplies = theQuery.getResultList();
