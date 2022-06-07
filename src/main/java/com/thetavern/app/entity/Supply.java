@@ -27,19 +27,19 @@ public class Supply {
 	public String desc;
 	
 	@Column(name="price")
-	public String price;
+	public int price;
 	
 	@Column(name="stock")
 	public int stock;
 	
 	@Column(name="unit")
 	public String unit;
-
+	
 	public Supply() {
 		super();
 	}
 	
-	public Supply(String name, String desc, String price, int stock, String unit) {
+	public Supply(String name, String desc, int price, int stock, String unit) {
 		super();
 		this.name = name;
 		this.desc = desc;
@@ -72,11 +72,11 @@ public class Supply {
 		this.desc = desc;
 	}
 
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
@@ -103,6 +103,7 @@ public class Supply {
 	}
 
 
-	
+
+
 
 }
