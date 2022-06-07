@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thetavern.app.entity.Employee;
 import com.thetavern.app.service.EmployeeService;
+import com.thetavern.app.utils.StringUtils;
 
 /**
  * @author Fernando Nathanael
@@ -78,11 +79,11 @@ public class AdminController {
 
 	@PostMapping("/employees/save")
 	public String saveEmployee(Employee theEmployee) {
-
+		
 		// Capitalizes first letter of first word
-		String employeeName = theEmployee.getName();
+		String employeeName = StringUtils.capitalizeAll(theEmployee.getName());
 
-		theEmployee.setName(employeeName.substring(0, 1).toUpperCase() + employeeName.substring(1));
+		theEmployee.setName(employeeName);
 
 		employeeService.save(theEmployee);
 
