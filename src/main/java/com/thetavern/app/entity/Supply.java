@@ -23,8 +23,8 @@ public class Supply {
 	@Column(name="name")
 	public String name;
 	
-	@Column(name="desc")
-	public String desc;
+	@Column(name="description")
+	public String description;
 	
 	@Column(name="price")
 	public int price;
@@ -38,11 +38,11 @@ public class Supply {
 	public Supply() {
 		super();
 	}
-	
-	public Supply(String name, String desc, int price, int stock, String unit) {
+
+	public Supply(String name, String description, int price, int stock, String unit) {
 		super();
 		this.name = name;
-		this.desc = desc;
+		this.description = description;
 		this.price = price;
 		this.stock = stock;
 		this.unit = unit;
@@ -64,12 +64,12 @@ public class Supply {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public int getPrice() {
@@ -98,12 +98,9 @@ public class Supply {
 
 	@Override
 	public String toString() {
-		return "Supply [id=" + id + ", name=" + name + ", desc=" + desc + ", price=" + price + ", stock=" + stock
-				+ ", unit=" + unit + "]";
+		return "Supply [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stock="
+				+ stock + ", unit=" + unit + "]";
 	}
-
-
-
-
+	
 
 }

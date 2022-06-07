@@ -163,17 +163,17 @@
                                     <form accept-charset="utf-8" action="#" th:action="@{/supply-management/add-supply-form}"
                                     										th:object="${supply}" method="POST">
                                         <div class="mb-3">
-                                            <label for="text" class="form-label">Full name</label>
+                                            <label for="text" class="form-label">Item Name</label>
                                             <input type="text" th:field="*{name}" name="employee-name" placeholder="Full Name" class="form-control" required>
                                         </div>
                                         
                                         <div class="mb-3">
-                                            <label for="dateofbirth" class="form-label">Date of Birth</label>
-                                            <input type="date" th:field="*{dateOfBirth}" placeholder="MM/DD/YYY" name="date-of-birth" class="form-control" required>
+                                            <label for="dateofbirth" class="form-label">Description</label>
+                                            <input type="date" th:field="*{description}" placeholder="MM/DD/YYY" name="date-of-birth" class="form-control" required>
                                         </div>
                                         
                                         <div class="mb-3">
-                                            <label for="text" class="form-label">Biological Sex</label>
+                                            <label for="text" class="form-label">Price</label>
                                             <select id="biological-sex" th:field="*{sex}" name="biological-sex" class="form-control" required>
                                             	<option value="F" selected>Female</option>
                                             	<option value="M">Male</option>
@@ -181,32 +181,15 @@
                                         </div>
                                         
                                         <div class="mb-3">
-                                            <label for="text" class="form-label">Email</label>
+                                            <label for="text" class="form-label">Stock</label>
                                             <input type="email" th:field="*{email}" name="email" placeholder="Email" class="form-control" required>
                                         </div>
                                         
                                         <div class="mb-3">
-                                            <label for="text" class="form-label">Home Address</label>
+                                            <label for="text" class="form-label">Unit</label>
                                             <input type="text" th:field="*{homeAddress}" name="home-address" placeholder="Home Address" class="form-control" required>
                                         </div>
-                                        
-										<div class="mb-3">
-                                            <label for="text" class="form-label">Pay/hour (Rp.)</label>
-                                            <input type="number" th:field="*{payHour}" name="pay-hour" placeholder="Rp." class="form-control" required>
-                                        </div>
-                                        
-                                        <div class="mb-3">
-                                            <label for="text" class="form-label">Role</label>
-                                            <input type="text" th:field="*{role}" name="role" placeholder="Employee Role" class="form-control" required>
-                                        </div>
-                                        
-										<div class="mb-3">
-                                            <label for="text" class="form-label">Is Permanent Officer</label>
-                                            <select id="permanent-officer" th:field="*{permanentOfficer}" name="permanent-officer" class="form-control" required>
-                                            	<option value="0" selected>False</option>
-                                            	<option value="1">True</option>
-                                            </select>
-                                        </div>
+                                       
                                         
                                         
                                         <div class="mb-3">
