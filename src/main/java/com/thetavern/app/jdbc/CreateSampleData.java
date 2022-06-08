@@ -35,13 +35,13 @@ public class CreateSampleData {
 			Employee tempEmployee2 = new Employee("Fernando", "1913-10-10", "M", "Jl H Kaiman", "patriciawikarta18@gmail.com", "1000000", "Cashier", true);
 			Employee tempEmployee3 = new Employee("Matthew", "2001-01-01", "F", "Jl Kelapa", "matthew.cahyadi@gmail.com", "99999999", "Admin", true);
 			Employee tempEmployee4 = new Employee("Ferdi", "2001-02-02", "M", "Jl H Kaiman", "ferdir15@gmail.com", "1000000", "Cashier", true);
-			Customer tempCustomer1 = new Customer("patricia", "patricia123", "2001-12-23", true);
-			Customer tempCustomer2 = new Customer("joni", "cafemantul123", "2001-01-01", true);
-			Customer tempCustomer3 = new Customer("udin", "123456", "2001-02-01", true);
-			Menu tempMenu1 = new Menu("Espresso", "This is a description about espresso idk probably tastes bitter i guess", "espresso.jpg", 5, true);
-			Menu tempMenu2 = new Menu("Caffe Latte", "A desc about caffe latte", "caffelatte.jpg", 5, true);
-			Menu tempMenu3 = new Menu("Croissant", "A very crunchy croissant", "croissant.jpg", 5, true);
-			
+//			Customer tempCustomer1 = new Customer("patricia", "patricia123", "2001-12-23", true);
+//			Customer tempCustomer2 = new Customer("joni", "cafemantul123", "2001-01-01", true);
+//			Customer tempCustomer3 = new Customer("udin", "123456", "2001-02-01", true);
+//			Menu tempMenu1 = new Menu("Espresso", "This is a description about espresso idk probably tastes bitter i guess", "espresso.jpg", 5, true);
+//			Menu tempMenu2 = new Menu("Caffe Latte", "A desc about caffe latte", "caffelatte.jpg", 5, true);
+//			Menu tempMenu3 = new Menu("Croissant", "A very crunchy croissant", "croissant.jpg", 5, true);
+//			
 			
 			// begins transaction
 			session.beginTransaction();
@@ -52,12 +52,12 @@ public class CreateSampleData {
 			session.save(tempEmployee3);
 			session.save(tempEmployee4);
 			
-			session.save(tempCustomer1);
-			session.save(tempCustomer2);
-			session.save(tempCustomer3);
-			session.save(tempMenu1);
-			session.save(tempMenu2);
-			session.save(tempMenu3);
+//			session.save(tempCustomer1);
+//			session.save(tempCustomer2);
+//			session.save(tempCustomer3);
+//			session.save(tempMenu1);
+//			session.save(tempMenu2);
+//			session.save(tempMenu3);
 
 			// commits transaction
 			session.getTransaction().commit();

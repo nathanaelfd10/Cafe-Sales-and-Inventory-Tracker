@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,6 +56,16 @@ public class EmployeeController {
 		return "employee/inventory-management/add-supply-form";
 	}
 	
+	@GetMapping("/inventory-management/update-supply")
+	public String showUpdateSupplyForm(@RequestParam("id") int theId, Model theModel) {
+		
+		Supply theSupply = supplyService.findById(theId);
+		
+		theModel.addAttribute(theSupply);		
+		
+		return "employee/inventory-management/update-supply-form";
+	}
+	
 	@PostMapping("/inventory-management/save-supply")
 	public String saveSupply(Supply theSupply) {
 				
@@ -70,7 +79,7 @@ public class EmployeeController {
 		
 	}
 	
-	@GetMapping("/inventory-management/delete")
+	@GetMapping("/inventory-management/delete-supply")
 	public String deleteSupply(@RequestParam("id") int theId) {
 		
 		supplyService.deleteById(theId);

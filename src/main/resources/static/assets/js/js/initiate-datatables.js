@@ -4,8 +4,10 @@
     
     $('#dataTables-example').DataTable({
         responsive: true,
-        pageLength: 20,
+        paging: true,
+        pageLength: 5,
         lengthChange: false,
+        serverSide: true,
         searching: true,
         ordering: true
     });
