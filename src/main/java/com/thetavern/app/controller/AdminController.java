@@ -1,6 +1,5 @@
 package com.thetavern.app.controller;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thetavern.app.entity.Employee;
 import com.thetavern.app.service.EmployeeService;
-import com.thetavern.app.utils.StringUtils;
 
 /**
  * @author Fernando Nathanael
@@ -41,29 +39,23 @@ public class AdminController {
 	}
 
 	@GetMapping("/employees")
-	public String showEmployees(Model theModel, Principal principal) {
+	public String showEmployees(Model theModel) {
 
 		List<Employee> employees = employeeService.findAll();
-		String username = principal.getName();
 		
 		theModel.addAttribute("employees", employees);
-		theModel.addAttribute("username", username);
 
 		return "admin/employee-management/table";
 
 	}
 
 	@GetMapping("/employees/add")
-	public String addNewEmployee(Model theModel, Principal thePrincipal) {
-
-		// get username to show it in navbar
-		String username = thePrincipal.getName();
+	public String addNewEmployee(Model theModel) {
 		
 		// model attribute to bind form data
 		Employee theEmployee = new Employee();
 
 		theModel.addAttribute("employee", theEmployee);
-		theModel.addAttribute("username", username);
 
 		return "admin/employee-management/add-form";
 	}

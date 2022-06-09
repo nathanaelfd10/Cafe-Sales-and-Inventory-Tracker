@@ -1,6 +1,5 @@
 package com.thetavern.app.controller;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.thymeleaf.util.StringUtils;
 
 import com.thetavern.app.entity.Menu;
 import com.thetavern.app.entity.Supply;
@@ -36,11 +34,7 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/dashboard")
-	public String showHome(Model theModel, Principal thePrincipal) {
-		
-		String username = thePrincipal.getName();
-		
-		theModel.addAttribute("username", username);
+	public String showHome(Model theModel) {
 		
 		return "/employee/dashboard";
 	}
