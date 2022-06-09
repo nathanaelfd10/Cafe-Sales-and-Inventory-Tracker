@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.thymeleaf.util.StringUtils;
+
 /**
  * @author Fernando Nathanael
  *
@@ -24,7 +26,7 @@ public class Menu {
 	private String name;
 	
 	@Column(name="description")
-	private String desc;
+	private String description;
 	
 	@Column(name="image")
 	private String image;
@@ -39,9 +41,9 @@ public class Menu {
 		
 	}
 
-	public Menu(String name, String desc, String image, int price, Boolean available) {
+	public Menu(String name, String description, String image, int price, Boolean available) {
 		this.name = name;
-		this.desc = desc;
+		this.description = description;
 		this.image = image;
 		this.price = price;
 		this.available = available;
@@ -60,15 +62,24 @@ public class Menu {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		
+		try {
+			String capitalizedName = StringUtils.capitalizeWords(name);
+			this.name = capitalizedName;
+		} catch (Exception e) {
+			System.err.println("[Menu] Failed to capitalize words: " + name);
+			this.name = name;
+		}
+		
+		
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getImage() {
@@ -97,7 +108,7 @@ public class Menu {
 
 	@Override
 	public String toString() {
-		return "Menu [id=" + id + ", name=" + name + ", desc=" + desc + ", image=" + image + ", price=" + price
+		return "Menu [id=" + id + ", name=" + name + ", description=" + description + ", image=" + image + ", price=" + price
 				+ ", available=" + available + "]";
 	}
 	

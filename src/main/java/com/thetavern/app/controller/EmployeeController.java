@@ -39,6 +39,7 @@ public class EmployeeController {
 		return "/employee/dashboard";
 	}
 	
+	/* Queries all data from db and show in both table */
 	@GetMapping("/inventory-management")
 	public String showInventoryMenu(Model theModel) {
 		
@@ -51,6 +52,48 @@ public class EmployeeController {
 		return "employee/inventory-management/table";
 	}
 	
+	
+	/* CRUD for Menu */
+	@GetMapping("/inventory-management/add-menu") 
+	public String showAddMenuForm(Model theModel) {
+		
+		Menu theMenu = new Menu();
+		
+		theModel.addAttribute("menu", theMenu);
+		
+		return "employee/inventory-management/add-menu-form";
+	}
+	
+	@GetMapping("/inventory-management/update-menu")
+	public String showUpdateMenuForm(@RequestParam("id") int theId, Model theModel) {
+		
+		Menu theMenu = menuService.findById(theId);
+		
+		theModel.addAttribute("menu", theMenu);		
+		
+		return "employee/inventory-management/update-menu-form";
+	}
+	
+	@PostMapping("/inventory-management/save-menu")
+	public String saveMenu(Menu theMenu) {
+		
+		menuService.save(theMenu);
+		
+		return "redirect:/employee/inventory-management";
+		
+	}
+	
+	@GetMapping("/inventory-management/delete-menu")
+	public String deleteMenu(@RequestParam("id") int theId) {
+		
+		menuService.deleteById(theId);
+		
+		return "redirect:/employee/inventory-management";
+		
+	}
+	
+	
+	/* CRUD for Supply */
 	@GetMapping("/inventory-management/add-supply") 
 	public String showAddSupplyForm(Model theModel) {
 		
@@ -66,7 +109,7 @@ public class EmployeeController {
 		
 		Supply theSupply = supplyService.findById(theId);
 		
-		theModel.addAttribute(theSupply);		
+		theModel.addAttribute("supply", theSupply);		
 		
 		return "employee/inventory-management/update-supply-form";
 	}
