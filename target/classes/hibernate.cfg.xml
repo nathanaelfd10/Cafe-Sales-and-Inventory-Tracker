@@ -8,9 +8,9 @@
 
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/janji_manis_directory?useSSL=false&amp;serverTimezone=UTC</property>
-        <property name="connection.username">janjimanis</property>
-        <property name="connection.password">janjimanis</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/the_tavern_directory?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="connection.username">thetavern</property>
+        <property name="connection.password">thetavern</property>
 
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>

@@ -63,7 +63,11 @@ public class CreateSampleData {
 			session.getTransaction().commit();
 						
 		} finally {
+			
+			session.close();
+			
 			factory.close();
+		
 		}
 		
 		

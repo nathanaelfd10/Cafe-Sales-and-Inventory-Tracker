@@ -44,6 +44,12 @@ public class EmployeeController {
 		return "/employee/dashboard";
 	}
 	
+	/* Cashier Panel */
+	@GetMapping("/cashier-panel")
+	public String showCashierPanel() {
+		return "/employee/cashier-panael";
+	}
+	
 	/* Queries all data from db and show in both table */
 	@GetMapping("/inventory-management")
 	public String showInventoryMenu(Model theModel) {

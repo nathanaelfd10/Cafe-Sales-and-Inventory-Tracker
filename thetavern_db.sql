@@ -29,8 +29,6 @@ INSERT INTO `users`
 VALUES 
 ('thetavern','{bcrypt}$2a$10$h35W41KLLqTbT/3Ve7KrE.gz/iaFBKrAeOEGV0sUjtOutmrAdxEAK', 1),
 ('noxfl','{bcrypt}$2a$10$h35W41KLLqTbT/3Ve7KrE.gz/iaFBKrAeOEGV0sUjtOutmrAdxEAK',1),
-('john','{noop}test123',1),
-('mary','{noop}test123',1),
 ('patricia','{bcrypt}$2a$10$h35W41KLLqTbT/3Ve7KrE.gz/iaFBKrAeOEGV0sUjtOutmrAdxEAK',1);
 
 DROP TABLE IF EXISTS `role`;
@@ -51,8 +49,6 @@ INSERT INTO `authorities`
 VALUES
 ('thetavern','ROLE_ADMIN'),
 ('noxfl','ROLE_EMPLOYEE'),
-('john','ROLE_EMPLOYEE'),
-('mary','ROLE_EMPLOYEE'),
 ('patricia','ROLE_EMPLOYEE'),
 ('patricia','ROLE_ADMIN');
 
@@ -69,6 +65,12 @@ CREATE TABLE `menu` (
 	PRIMARY KEY (`id`)
 );
 
+INSERT INTO `menu`
+VALUES
+('Caffe Latte', 'The finest caffe latte in town', 'caffelatte.jpg', '37000', 1),
+('Flat White', 'The finest flat white in town', 'flatwhite.jpg', '35000', 1),
+('Espresso', 'For your quick dose of caffeine', 'espresso.jpg', '35000', 1);
+
 DROP TABLE IF EXISTS `supply`;
 CREATE TABLE `supply` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -79,6 +81,11 @@ CREATE TABLE `supply` (
     `unit` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );
+
+INSERT INTO `supply`
+VALUES
+(`Full Arabica Coffee Bean`, `Roast Profile: Medium Dark for Espresso`, `145000`, `3`, `kg`),
+(`Greenfield Milk Full Cream`, `Fresh Greenfield milk`, `35000`, `5`, `L`);
 
 DROP TABLE IF EXISTS `unit`;
 CREATE TABLE `unit` (
@@ -97,23 +104,30 @@ CREATE TABLE `customer` (
     PRIMARY KEY (`id`)
 );
 
+INSERT INTO `customer`
+VALUES
+('1', 'pat', 'pass', '2001/12/18', 1);
+
 CREATE TABLE `transaction` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
-	`cust_id` INT NOT NULL,
-	`date` INT NOT NULL,
-    `total` INT NOT NULL,
-    `tax` INT DEFAULT NULL,
-    `customer_type` VARCHAR(50) NOT NULL,
+	`customer_id` INT DEFAULT NULL,
+	`date` DATE DEFAULT NULL,
+    `total` decimal(15,2) NULL,
+    `tax` decimal(15,2) NULL,
+    `customer_type` VARCHAR(50) DEFAULT NULL,
     
     PRIMARY KEY (`id`),
-	FOREIGN KEY (`cust_id`) REFERENCES customer(`id`)
+	FOREIGN KEY (`customer_id`) REFERENCES customer(`id`)
 );
 
 CREATE TABLE `transaction_detail` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`transaction_id` INT NOT NULL,
     `menu_id` INT NOT NULL,
-	FOREIGN KEY (`transaction_id`) REFERENCES transaction(`id`),
-	FOREIGN KEY (`menu_id`) REFERENCES menu(`id`)
+    `customer_id` INT NOT NULL,
+    `date` DATE NOT NULL,
+    `price` INT (50) DEFAULT NULL,
+	FOREIGN KEY (`transaction_id`) REFERENCES transaction(`id`)
 )
 
 ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
