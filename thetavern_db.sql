@@ -67,9 +67,9 @@ CREATE TABLE `menu` (
 
 INSERT INTO `menu`
 VALUES
-('Caffe Latte', 'The finest caffe latte in town', 'caffelatte.jpg', '37000', 1),
-('Flat White', 'The finest flat white in town', 'flatwhite.jpg', '35000', 1),
-('Espresso', 'For your quick dose of caffeine', 'espresso.jpg', '35000', 1);
+('1', 'Caffe Latte', 'The finest caffe latte in town', 'caffelatte.jpg', '37000', 1),
+('2', 'Flat White', 'The finest flat white in town', 'flatwhite.jpg', '35000', 1),
+('3', 'Espresso', 'For your quick dose of caffeine', 'espresso.jpg', '35000', 1);
 
 DROP TABLE IF EXISTS `supply`;
 CREATE TABLE `supply` (
@@ -84,8 +84,8 @@ CREATE TABLE `supply` (
 
 INSERT INTO `supply`
 VALUES
-(`Full Arabica Coffee Bean`, `Roast Profile: Medium Dark for Espresso`, `145000`, `3`, `kg`),
-(`Greenfield Milk Full Cream`, `Fresh Greenfield milk`, `35000`, `5`, `L`);
+('1', 'Full Arabica Coffee Bean', 'Roast Profile: Medium Dark for Espresso', '14500', 3, 'kg'),
+('2', 'Greenfield Milk Full Cream', 'Fresh Greenfield milk', '35000', '5', 'L');
 
 DROP TABLE IF EXISTS `unit`;
 CREATE TABLE `unit` (
@@ -123,10 +123,11 @@ CREATE TABLE `transaction` (
 CREATE TABLE `transaction_detail` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`transaction_id` INT NOT NULL,
-    `menu_id` INT NOT NULL,
-    `customer_id` INT NOT NULL,
+    `menu_id` INT DEFAULT NULL,
+    `customer_id` INT DEFAULT NULL,
     `date` DATE NOT NULL,
     `price` INT (50) DEFAULT NULL,
+    PRIMARY KEY (`id`),
 	FOREIGN KEY (`transaction_id`) REFERENCES transaction(`id`)
 )
 
