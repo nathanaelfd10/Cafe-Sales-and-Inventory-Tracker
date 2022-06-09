@@ -33,6 +33,11 @@ public class EmployeeController {
 		supplyService = theSupplyService;
 	}
 	
+	@GetMapping({"", "/"})
+	public String redirectToDashboard() {
+		return "redirect:/employee/dashboard";
+	}
+	
 	@GetMapping("/dashboard")
 	public String showHome(Model theModel) {
 		
