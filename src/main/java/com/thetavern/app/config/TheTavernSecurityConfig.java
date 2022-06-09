@@ -35,7 +35,7 @@ public class TheTavernSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		.antMatchers("/assets/**").permitAll()
 		.antMatchers("/admin/**").hasRole("ADMIN")
-		.antMatchers("/employee/**").hasRole("EMPLOYEE")
+		.antMatchers("/employee/**").hasAnyRole("ADMIN", "EMPLOYEE")
 		.and()
 		.formLogin()
 			.loginPage("/login")
