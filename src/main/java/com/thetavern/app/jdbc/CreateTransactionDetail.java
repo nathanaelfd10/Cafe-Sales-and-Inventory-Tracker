@@ -15,7 +15,7 @@ import com.thetavern.app.entity.Transaction;
  * @author Fernando Nathanael
  *
  */
-public class CreateTransaction {
+public class CreateTransactionDetail {
 	
 	public static void main(String[] args) {
 		
@@ -23,8 +23,8 @@ public class CreateTransaction {
 		SessionFactory factory = new Configuration()
 								.configure("hibernate.cfg.xml")
 								.addAnnotatedClass(Customer.class)
-								.addAnnotatedClass(Menu.class)
 								.addAnnotatedClass(Transaction.class)
+								.addAnnotatedClass(Menu.class)
 								.buildSessionFactory();
 		
 		// create session
@@ -32,35 +32,21 @@ public class CreateTransaction {
 		
 		try {			
 			
-			// create the objects
-			/*
-			Instructor tempInstructor = 
-					new Instructor("Chad", "Darby", "darby@luv2code.com");
-			
-			InstructorDetail tempInstructorDetail =
-					new InstructorDetail(
-							"http://www.luv2code.com/youtube",
-							"Luv 2 code!!!");		
-			*/
-			
 			session.beginTransaction();
 			
 			int theId = 1;
-			Customer tempCustomer = session.get(Customer.class, theId);		
 			
-			Transaction tempTransaction =
-					new Transaction("2022-06-09", 10000, 1000, "GRAB");
+			Menu tempMenu = session.get(Menu.class, theId);
 			
-			// associate the objects
-			tempCustomer.add(tempTransaction);
+			Transaction tempTransaction = session.get(Transaction.class, theId);	
+			
+			tempTransaction.addMenu(tempMenu);
+			
 			
 			// save the instructor
 			session.save(tempTransaction);
 			
-			//
-			// Note: this will ALSO save the details object
-			// because of CascadeType.ALL
-			//
+
 			System.out.println("Saving transaction: " + tempTransaction);				
 			
 			// commit transaction

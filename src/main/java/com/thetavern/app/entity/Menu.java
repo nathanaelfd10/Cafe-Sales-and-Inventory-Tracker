@@ -1,10 +1,17 @@
 package com.thetavern.app.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.thymeleaf.util.StringUtils;
@@ -14,31 +21,40 @@ import org.thymeleaf.util.StringUtils;
  *
  */
 @Entity
-@Table(name="menu")
+@Table(name = "menu")
 public class Menu {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="description")
+
+	@Column(name = "description")
 	private String description;
-	
-	@Column(name="image")
+
+	@Column(name = "image")
 	private String image;
-	
-	@Column(name="price")
+
+	@Column(name = "price")
 	private int price;
-	
-	@Column(name="available")
+
+	@Column(name = "available")
 	private Boolean available;
-	
+
+	@ManyToMany(fetch=FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+			CascadeType.REFRESH })
+	@JoinTable(
+			name="transaction_detail",
+			joinColumns=@JoinColumn(name="menu_id"),
+			inverseJoinColumns=@JoinColumn(name="transaction_id")
+			)	
+	private List<Transaction> transactions;
+
 	public Menu() {
-		
+
 	}
 
 	public Menu(String name, String description, String image, int price, Boolean available) {
@@ -62,7 +78,7 @@ public class Menu {
 	}
 
 	public void setName(String name) {
-		
+
 		try {
 			String capitalizedName = StringUtils.capitalizeWords(name);
 			this.name = capitalizedName;
@@ -70,8 +86,7 @@ public class Menu {
 			System.err.println("[Menu] Failed to capitalize words: " + name);
 			this.name = name;
 		}
-		
-		
+
 	}
 
 	public String getDescription() {
@@ -108,8 +123,8 @@ public class Menu {
 
 	@Override
 	public String toString() {
-		return "Menu [id=" + id + ", name=" + name + ", description=" + description + ", image=" + image + ", price=" + price
-				+ ", available=" + available + "]";
+		return "Menu [id=" + id + ", name=" + name + ", description=" + description + ", image=" + image + ", price="
+				+ price + ", available=" + available + "]";
 	}
-	
+
 }

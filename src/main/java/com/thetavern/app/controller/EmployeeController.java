@@ -47,7 +47,7 @@ public class EmployeeController {
 	/* Cashier Panel */
 	@GetMapping("/cashier-panel")
 	public String showCashierPanel() {
-		return "/employee/cashier-panael";
+		return "/employee/cashier-panel";
 	}
 	
 	/* Queries all data from db and show in both table */

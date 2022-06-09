@@ -121,14 +121,10 @@ CREATE TABLE `transaction` (
 );
 
 CREATE TABLE `transaction_detail` (
-	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`transaction_id` INT NOT NULL,
     `menu_id` INT DEFAULT NULL,
-    `customer_id` INT DEFAULT NULL,
-    `date` DATE NOT NULL,
-    `price` INT (50) DEFAULT NULL,
-    PRIMARY KEY (`id`),
-	FOREIGN KEY (`transaction_id`) REFERENCES transaction(`id`)
+	FOREIGN KEY (`transaction_id`) REFERENCES transaction(`id`),
+    FOREIGN KEY (`menu_id`) REFERENCES menu(`id`)
 )
 
 ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;

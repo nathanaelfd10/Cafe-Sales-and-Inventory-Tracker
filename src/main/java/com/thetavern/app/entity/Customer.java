@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -100,14 +99,14 @@ public class Customer {
 				+ ", isMember=" + isMember + "]";
 	}
 	
-	public void add(Transaction theTransaction) {
+	public void add(Transaction tempTransaction) {
 		if (transactions == null) {
 			transactions = new ArrayList<>();
 		}
 		
-		transactions.add(theTransaction);
+		transactions.add(tempTransaction);
 		
-		theTransaction.setCustomer(this);
+		tempTransaction.setCustomer(this);
 	}
 	
 }
