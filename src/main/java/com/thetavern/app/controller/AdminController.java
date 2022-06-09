@@ -54,12 +54,16 @@ public class AdminController {
 	}
 
 	@GetMapping("/employees/add")
-	public String addNewEmployee(Model theModel) {
+	public String addNewEmployee(Model theModel, Principal thePrincipal) {
 
+		// get username to show it in navbar
+		String username = thePrincipal.getName();
+		
 		// model attribute to bind form data
 		Employee theEmployee = new Employee();
 
 		theModel.addAttribute("employee", theEmployee);
+		theModel.addAttribute("username", username);
 
 		return "admin/employee-management/add-form";
 	}
@@ -80,11 +84,6 @@ public class AdminController {
 	@PostMapping("/employees/save")
 	public String saveEmployee(Employee theEmployee) {
 		
-		// Capitalizes first letter of first word
-		String employeeName = StringUtils.capitalizeAll(theEmployee.getName());
-
-		theEmployee.setName(employeeName);
-
 		employeeService.save(theEmployee);
 
 		return "redirect:/admin/employees";

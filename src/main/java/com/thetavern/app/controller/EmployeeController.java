@@ -1,5 +1,6 @@
 package com.thetavern.app.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,16 @@ public class EmployeeController {
 	public EmployeeController(MenuService theMenuService, SupplyService theSupplyService) {
 		menuService = theMenuService;
 		supplyService = theSupplyService;
+	}
+	
+	@GetMapping("/dashboard")
+	public String showHome(Model theModel, Principal thePrincipal) {
+		
+		String username = thePrincipal.getName();
+		
+		theModel.addAttribute("username", username);
+		
+		return "/employee/dashboard";
 	}
 	
 	@GetMapping("/inventory-management")
@@ -68,10 +79,6 @@ public class EmployeeController {
 	
 	@PostMapping("/inventory-management/save-supply")
 	public String saveSupply(Supply theSupply) {
-				
-		String supplyName = StringUtils.capitalize(theSupply.getName());
-		
-		theSupply.setName(supplyName);
 		
 		supplyService.save(theSupply);
 		

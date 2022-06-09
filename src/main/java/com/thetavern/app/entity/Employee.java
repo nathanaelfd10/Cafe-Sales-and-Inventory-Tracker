@@ -7,12 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.thymeleaf.util.StringUtils;
+
 /**
  * @author Fernando Nathanael
  *
  */
 @Entity
-@Table(name="employee")
+@Table(name = "employee")
 public class Employee {
 
 	@Id
@@ -47,9 +49,9 @@ public class Employee {
 	public Employee() {
 
 	}
-	
-	/* To-dos:
-	 * [DONE] Add email field
+
+	/*
+	 * To-dos: [DONE] Add email field
 	 */
 
 	public Employee(String name, String dateOfBirth, String sex, String email, String homeAddress, String payHour,
@@ -78,7 +80,10 @@ public class Employee {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+
+		String capitalizedName = StringUtils.capitalizeWords(name);
+
+		this.name = capitalizedName;
 	}
 
 	public String getDateOfBirth() {
@@ -110,7 +115,20 @@ public class Employee {
 	}
 
 	public void setHomeAddress(String homeAddress) {
-		this.homeAddress = homeAddress;
+		
+		try {
+			
+			String capitalizedHomeAddress = StringUtils.capitalizeWords(homeAddress);
+			this.homeAddress = capitalizedHomeAddress;
+			
+		} catch (Exception e) {
+			
+			System.err.println("[Employee] Failed to convert Home Address to uppercase.");
+			this.homeAddress = homeAddress;
+			
+		}
+		
+		
 	}
 
 	public String getPayHour() {
@@ -126,7 +144,20 @@ public class Employee {
 	}
 
 	public void setRole(String role) {
-		this.role = role;
+		
+		try {
+			
+			String capitalizedRole = role.toUpperCase();
+			this.role = capitalizedRole;
+			
+		} catch (Exception e) {
+			
+			System.err.println("[Employee] Failed to convert role to uppercase.");
+			this.role = role;
+			
+		}
+		
+		
 	}
 
 	public Boolean getPermanentOfficer() {

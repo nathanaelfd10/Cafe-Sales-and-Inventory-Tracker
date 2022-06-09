@@ -25,7 +25,7 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String showHome() {
-		return "index";
+		return "redirect:/employee/dashboard";
 	}
 	
 	@GetMapping("/login")

@@ -10,8 +10,9 @@ import javax.persistence.Table;
  * @author Fernando Nathanael
  *
  */
-@Entity
-@Table(name="users")
+
 public class User {
+	
+	
 
 }

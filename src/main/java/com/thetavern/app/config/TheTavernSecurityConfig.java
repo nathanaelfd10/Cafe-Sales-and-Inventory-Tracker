@@ -45,7 +45,8 @@ public class TheTavernSecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout().permitAll()
 			.logoutSuccessUrl("/login")
 		.and()
-			.exceptionHandling().accessDeniedPage("/access-denied");		
+			.exceptionHandling().accessDeniedPage("/access-denied");	
+		
 	}
 
 }

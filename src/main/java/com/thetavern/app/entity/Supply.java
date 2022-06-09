@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.thymeleaf.util.StringUtils;
+
 /**
  * @author Fernando Nathanael
  *
@@ -61,7 +63,10 @@ public class Supply {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		
+		String capitalizedName = StringUtils.capitalizeWords(name);
+		
+		this.name = capitalizedName;
 	}
 
 	public String getDescription() {
