@@ -12,6 +12,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.thetavern.app.entity.Menu;
 import com.thetavern.app.entity.Transaction;
 
 /**
@@ -56,10 +57,16 @@ public class TransactionDAOHibernateImpl implements TransactionDAO {
 	}
 
 	@Override
-	public void save(Transaction theTransaction) {
+	public void save(Transaction theTransaction, List<Menu> menus) {
 		
 		// gets session
 		Session currentSession = entityManager.unwrap(Session.class);
+		
+		// loops through menu
+		for(Menu theMenu : menus) {
+			theTransaction.addMenu(theMenu);
+		}
+		
 		
 		// save employee
 		currentSession.saveOrUpdate(theTransaction);

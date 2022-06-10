@@ -46,8 +46,14 @@ public class EmployeeController {
 	
 	/* Cashier Panel */
 	@GetMapping("/cashier-panel")
-	public String showCashierPanel() {
-		return "/employee/cashier-panel";
+	public String showCashierPanel(Model theModel) {
+		
+		List<Menu> menus = menuService.findAll();
+		
+		theModel.addAttribute("menus", menus);
+		
+		
+		return "/employee/under-construction";
 	}
 	
 	/* Queries all data from db and show in both table */
