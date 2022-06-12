@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Built-By: based
 Build-Jdk: 11.0.13
-Implementation-Title: janjimanis.app
+Implementation-Title: tavern.app
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor-Id: com.thetavern
 Implementation-URL: https://spring.io/projects/spring-boot/tavern.app
