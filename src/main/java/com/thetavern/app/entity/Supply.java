@@ -14,32 +14,32 @@ import org.thymeleaf.util.StringUtils;
  *
  */
 @Entity
-@Table(name="supply")
+@Table(name = "supply")
 public class Supply {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="description")
+
+	@Column(name = "description")
 	private String description;
-	
-	@Column(name="price")
+
+	@Column(name = "price")
 	private int price;
-	
-	@Column(name="stock")
+
+	@Column(name = "stock")
 	private int stock;
-	
-	@Column(name="unit")
+
+	@Column(name = "unit")
 	private String unit;
 
+	@Column(name = "category")
 	private String category;
-	
-	
+
 	public String getCategory() {
 		return category;
 	}
@@ -74,9 +74,9 @@ public class Supply {
 	}
 
 	public void setName(String name) {
-		
+
 		String capitalizedName = StringUtils.capitalizeWords(name);
-		
+
 		this.name = capitalizedName;
 	}
 
@@ -117,6 +117,5 @@ public class Supply {
 		return "Supply [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stock="
 				+ stock + ", unit=" + unit + ", category=" + category + "]";
 	}
-	
 
 }

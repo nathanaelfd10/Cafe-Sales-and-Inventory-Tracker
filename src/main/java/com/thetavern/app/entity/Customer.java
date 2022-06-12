@@ -17,32 +17,32 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="customer")
+@Table(name = "customer")
 public class Customer {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="password")
+
+	@Column(name = "password")
 	private String password;
-	
-	@Column(name="date_of_birth")
+
+	@Column(name = "date_of_birth")
 	private String dateofBirth;
-	
-	@Column(name="is_member")
+
+	@Column(name = "is_member")
 	private Boolean isMember;
-	
-	@OneToMany(mappedBy="customer", cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-			 CascadeType.DETACH, CascadeType.REFRESH})
+
+	@OneToMany(mappedBy = "customer", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+			CascadeType.REFRESH })
 	private List<Transaction> transactions;
-		
+
 	public Customer() {
-		
+
 	}
 
 	public Customer(String name, String password, String dateofBirth, Boolean isMember) {
@@ -98,15 +98,15 @@ public class Customer {
 		return "Customer [id=" + id + ", name=" + name + ", password=" + password + ", dateofBirth=" + dateofBirth
 				+ ", isMember=" + isMember + "]";
 	}
-	
+
 	public void add(Transaction tempTransaction) {
 		if (transactions == null) {
 			transactions = new ArrayList<>();
 		}
-		
+
 		transactions.add(tempTransaction);
-		
+
 		tempTransaction.setCustomer(this);
 	}
-	
+
 }

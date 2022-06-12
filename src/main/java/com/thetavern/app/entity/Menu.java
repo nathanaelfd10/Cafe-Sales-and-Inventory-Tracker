@@ -43,16 +43,13 @@ public class Menu {
 
 	@Column(name = "available")
 	private Boolean available;
-	
+
+	@Column(name = "category")
 	private String category;
 
-	@ManyToMany(fetch=FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
 			CascadeType.REFRESH })
-	@JoinTable(
-			name="transaction_detail",
-			joinColumns=@JoinColumn(name="menu_id"),
-			inverseJoinColumns=@JoinColumn(name="transaction_id")
-			)	
+	@JoinTable(name = "transaction_detail", joinColumns = @JoinColumn(name = "menu_id"), inverseJoinColumns = @JoinColumn(name = "transaction_id"))
 	private List<Transaction> transactions;
 
 	public Menu() {
@@ -122,7 +119,7 @@ public class Menu {
 	public void setAvailable(Boolean available) {
 		this.available = available;
 	}
-	
+
 	public String getCategory() {
 		return category;
 	}

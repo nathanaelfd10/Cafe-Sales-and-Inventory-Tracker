@@ -115,20 +115,19 @@ public class Employee {
 	}
 
 	public void setHomeAddress(String homeAddress) {
-		
+
 		try {
-			
+
 			String capitalizedHomeAddress = StringUtils.capitalizeWords(homeAddress);
 			this.homeAddress = capitalizedHomeAddress;
-			
+
 		} catch (Exception e) {
-			
+
 			System.err.println("[Employee] Failed to convert Home Address to uppercase.");
 			this.homeAddress = homeAddress;
-			
+
 		}
-		
-		
+
 	}
 
 	public String getPayHour() {
@@ -144,20 +143,19 @@ public class Employee {
 	}
 
 	public void setRole(String role) {
-		
+
 		try {
-			
+
 			String capitalizedRole = role.toUpperCase();
 			this.role = capitalizedRole;
-			
+
 		} catch (Exception e) {
-			
+
 			System.err.println("[Employee] Failed to convert role to uppercase.");
 			this.role = role;
-			
+
 		}
-		
-		
+
 	}
 
 	public Boolean getPermanentOfficer() {
