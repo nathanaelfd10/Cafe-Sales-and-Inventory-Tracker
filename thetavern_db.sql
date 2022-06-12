@@ -25,12 +25,6 @@ CREATE TABLE `users`(
     PRIMARY KEY (`username`)
 );
 
-INSERT INTO `users`
-VALUES 
-('thetavern','{bcrypt}$2a$10$h35W41KLLqTbT/3Ve7KrE.gz/iaFBKrAeOEGV0sUjtOutmrAdxEAK', 1),
-('noxfl','{bcrypt}$2a$10$h35W41KLLqTbT/3Ve7KrE.gz/iaFBKrAeOEGV0sUjtOutmrAdxEAK',1),
-('patricia','{bcrypt}$2a$10$h35W41KLLqTbT/3Ve7KrE.gz/iaFBKrAeOEGV0sUjtOutmrAdxEAK',1);
-
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -45,13 +39,6 @@ CREATE TABLE `authorities` (
     CONSTRAINT `authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 );
 
-INSERT INTO `authorities`
-VALUES
-('thetavern','ROLE_ADMIN'),
-('noxfl','ROLE_EMPLOYEE'),
-('patricia','ROLE_EMPLOYEE'),
-('patricia','ROLE_ADMIN');
-
 DROP TABLE IF EXISTS `transaction_detail`;
 DROP TABLE IF EXISTS `transaction`;
 DROP TABLE IF EXISTS `menu`;
@@ -59,33 +46,24 @@ CREATE TABLE `menu` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(500) DEFAULT NULL,
     `description` VARCHAR(500) DEFAULT NULL,
+	`category` VARCHAR(500) DEFAULT NULL,
     `image` VARCHAR(500) DEFAULT NULL,
     `price` INT(5) DEFAULT NULL,
     `available` BOOLEAN DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );
 
-INSERT INTO `menu`
-VALUES
-('1', 'Caffe Latte', 'The finest caffe latte in town', 'caffelatte.jpg', '37000', 1),
-('2', 'Flat White', 'The finest flat white in town', 'flatwhite.jpg', '35000', 1),
-('3', 'Espresso', 'For your quick dose of caffeine', 'espresso.jpg', '35000', 1);
-
 DROP TABLE IF EXISTS `supply`;
 CREATE TABLE `supply` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(100) DEFAULT NULL,
     `description` VARCHAR(500) DEFAULT NULL,
+    `category` VARCHAR(500) DEFAULT NULL,
     `price` INT(20) DEFAULT NULL,
     `stock` INT(10) DEFAULT NULL,
     `unit` VARCHAR(50) DEFAULT NULL,
 	PRIMARY KEY (`id`)
 );
-
-INSERT INTO `supply`
-VALUES
-('1', 'Full Arabica Coffee Bean', 'Roast Profile: Medium Dark for Espresso', '14500', 3, 'kg'),
-('2', 'Greenfield Milk Full Cream', 'Fresh Greenfield milk', '35000', '5', 'L');
 
 DROP TABLE IF EXISTS `unit`;
 CREATE TABLE `unit` (
@@ -103,10 +81,6 @@ CREATE TABLE `customer` (
     `is_member` BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (`id`)
 );
-
-INSERT INTO `customer`
-VALUES
-('1', 'pat', 'pass', '2001/12/18', 1);
 
 CREATE TABLE `transaction` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
