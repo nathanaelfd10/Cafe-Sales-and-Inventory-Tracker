@@ -9,8 +9,6 @@ package com.thetavern.app.jdbc;
  */
 public class TransactionDAOTest {
 	
-	
-	
 	public static void main(String[] args) {
 		
 		

@@ -20,23 +20,34 @@ public class Supply {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	public int id;
+	private int id;
 	
 	@Column(name="name")
-	public String name;
+	private String name;
 	
 	@Column(name="description")
-	public String description;
+	private String description;
 	
 	@Column(name="price")
-	public int price;
+	private int price;
 	
 	@Column(name="stock")
-	public int stock;
+	private int stock;
 	
 	@Column(name="unit")
-	public String unit;
+	private String unit;
+
+	private String category;
 	
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	public Supply() {
 		super();
 	}
@@ -104,7 +115,7 @@ public class Supply {
 	@Override
 	public String toString() {
 		return "Supply [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stock="
-				+ stock + ", unit=" + unit + "]";
+				+ stock + ", unit=" + unit + ", category=" + category + "]";
 	}
 	
 

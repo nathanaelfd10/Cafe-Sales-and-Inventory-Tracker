@@ -52,8 +52,7 @@ public class EmployeeController {
 		
 		theModel.addAttribute("menus", menus);
 		
-		
-		return "/employee/under-construction";
+		return "/employee/cashier-panel";
 	}
 	
 	/* Queries all data from db and show in both table */

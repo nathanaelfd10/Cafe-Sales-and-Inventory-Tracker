@@ -37,6 +37,12 @@ public class AdminController {
 	public String showAdminPanel() {
 		return "dashboard";
 	}
+	
+	@GetMapping("/signup")
+	public String showSignUpPage() {
+		
+		return "asdf";
+	}
 
 	@GetMapping("/employees")
 	public String showEmployees(Model theModel) {
