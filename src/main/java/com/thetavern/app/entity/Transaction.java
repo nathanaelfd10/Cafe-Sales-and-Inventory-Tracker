@@ -131,4 +131,10 @@ public class Transaction {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", customer=" + customer + ", date=" + date + ", total="
+				+ total + ", tax=" + tax + ", customerType=" + customerType + ", menus=" + menus + "]";
+	}
+
 }

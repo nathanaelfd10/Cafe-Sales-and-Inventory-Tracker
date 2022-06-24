@@ -56,6 +56,20 @@ public class Menu {
 
 	}
 
+	
+	
+	public Menu (int id, String name, String description, String image, int price, Boolean available) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.image = image;
+		this.price = price;
+		this.available = available;
+	}
+
+
+
 	public Menu(String name, String description, String image, int price, Boolean available) {
 		this.name = name;
 		this.description = description;

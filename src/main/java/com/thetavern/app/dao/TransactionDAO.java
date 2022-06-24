@@ -2,7 +2,6 @@ package com.thetavern.app.dao;
 
 import java.util.List;
 
-import com.thetavern.app.entity.Menu;
 import com.thetavern.app.entity.Transaction;
 
 /**
@@ -15,7 +14,7 @@ public interface TransactionDAO {
 
 	public Transaction findById(int theId);
 
-	public void save(Transaction theTransaction, List<Menu> menus);
+	public void save(Transaction theTransaction, List<Integer> menuId);
 
 	public void deleteById(int theId);
 

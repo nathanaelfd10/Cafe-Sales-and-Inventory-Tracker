@@ -21,83 +21,35 @@
 
 <body>
     <div class="wrapper">
+<div class="wrapper">
         <!-- sidebar navigation component -->
-        <nav id="sidebar" class="active">
+                <nav id="sidebar" class="active">
             <div class="sidebar-header">
                 <img src="assets/img/bootstraper-logo.png" alt="bootraper logo" class="app-logo">
             </div>
             <ul class="list-unstyled components text-secondary">
                 <li>
-                    <a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a>
+                    <a th:href="@{/employee/dashboard}"><i class="fas fa-home"></i>Dashboard</a>
                 </li>
-                <li>
-                    <a href="forms.html"><i class="fas fa-file-alt"></i>Forms</a>
+				<li>
+                    <a th:href="@{/employee/cashier-panel}"><i class="fas fa-home"></i>Cashier Panel</a>
                 </li>
-                <li>
-                    <a href="tables.html"><i class="fas fa-table"></i>Tables</a>
-                </li>
-                <li>
-                    <a href="charts.html"><i class="fas fa-chart-bar"></i>Charts</a>
-                </li>
-                <li>
-                    <a href="icons.html"><i class="fas fa-icons"></i>Icons</a>
-                </li>
-                <li>
-                    <a href="#uielementsmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i>UI Elements</a>
-                    <ul class="collapse list-unstyled" id="uielementsmenu">
-                        <li>
-                            <a href="ui-buttons.html"><i class="fas fa-angle-right"></i>Buttons</a>
-                        </li>
-                        <li>
-                            <a href="ui-badges.html"><i class="fas fa-angle-right"></i>Badges</a>
-                        </li>
-                        <li>
-                            <a href="ui-cards.html"><i class="fas fa-angle-right"></i>Cards</a>
-                        </li>
-                        <li>
-                            <a href="ui-alerts.html"><i class="fas fa-angle-right"></i>Alerts</a>
-                        </li>
-                        <li>
-                            <a href="ui-tabs.html"><i class="fas fa-angle-right"></i>Tabs</a>
-                        </li>
-                        <li>
-                            <a href="ui-date-time-picker.html"><i class="fas fa-angle-right"></i>Date & Time Picker</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#authmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-user-shield"></i>Authentication</a>
+                <div class="dropdown-divider"></div>
+                <li sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a href="#authmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-user-shield"></i>Admin</a>
                     <ul class="collapse list-unstyled" id="authmenu">
                         <li>
-                            <a href="login.html"><i class="fas fa-lock"></i>Login</a>
-                        </li>
-                        <li>
-                            <a href="signup.html"><i class="fas fa-user-plus"></i>Signup</a>
-                        </li>
-                        <li>
-                            <a href="forgot-password.html"><i class="fas fa-user-lock"></i>Forgot password</a>
+                            <a th:href="@{/admin/employees}"><i class="fas fa-lock"></i> Employee Management</a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#pagesmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-copy"></i>Pages</a>
+                <li sec:authorize="hasRole('ROLE_EMPLOYEE')">
+                    <a href="#pagesmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-copy"></i> Employee</a>
                     <ul class="collapse list-unstyled" id="pagesmenu">
                         <li>
-                            <a href="blank.html"><i class="fas fa-file"></i>Blank page</a>
-                        </li>
-                        <li>
-                            <a href="404.html"><i class="fas fa-info-circle"></i>404 Error page</a>
-                        </li>
-                        <li>
-                            <a href="500.html"><i class="fas fa-info-circle"></i>500 Error page</a>
+                            <a th:href="@{/employee/inventory-management}"><i class="fas fa-file"></i> Inventory Management</a>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="users.html"><i class="fas fa-user-friends"></i>Users</a>
-                </li>
-                <li>
-                    <a href="settings.html"><i class="fas fa-cog"></i>Settings</a>
                 </li>
             </ul>
         </nav>
@@ -131,7 +83,7 @@
                         <li class="nav-item dropdown">
                             <div class="nav-dropdown">
                                 <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user"></i> <span>John Doe</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
+                                    <i class="fas fa-user"></i> <span sec:authentication="name"/> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end nav-link-menu">
                                     <ul class="nav-list">
@@ -139,7 +91,9 @@
                                         <li><a href="" class="dropdown-item"><i class="fas fa-envelope"></i> Messages</a></li>
                                         <li><a href="" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a></li>
                                         <div class="dropdown-divider"></div>
-                                        <li><a href="" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+										<form id="logout-form" th:action="@{/logout}" method="POST">
+   											<li><a href="javascript:;" onclick="document.getElementById('logout-form').submit();" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+   										</form>
                                     </ul>
                                 </div>
                             </div>
@@ -159,7 +113,8 @@
                                 <div class="card-header">Transaction form</div>
                                 <div class="card-body">
                                     <h5 class="card-title">Transaction Input Panel</h5>
-                                    <form class="needs-validation" novalidate accept-charset="utf-8">
+                                    <form class="needs-validation" novalidate accept-charset="utf-8" th:action="@{/employee/inventory-management/save-transaction/}"
+                                                                                                    th:object="${transaction}" method="POST">
                                         <div class="row g-2">
                                             <div class="mb-3 col-md-6">
                                                 <label for="customer-name" class="form-label">Customer name</label>
@@ -169,33 +124,54 @@
                                                 <div class="invalid-feedback">Please enter your email address.</div>
                                             </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="form-label">Address</label>
-                                            <input type="text" class="form-control" name="address" placeholder="1234 Main St, Unit, Building, or Floor" required>
-                                            <div class="valid-feedback">Looks good!</div>
-                                            <div class="invalid-feedback">Please enter your address.</div>
-                                        </div>
                                         <div class="row g-2">
                                             <div class="mb-3 col-md-6">
-                                                <label for="city" class="form-label">City</label>
-                                                <input type="text" class="form-control" name="city" placeholder="City" required>
-                                                <div class="valid-feedback">Looks good!</div>
-                                                <div class="invalid-feedback">Please enter your City.</div>
-                                            </div>
-                                            <div class="mb-3 col-md-4">
                                                 <label for="menu" class="form-label">Menu</label>
-                                                <select name="state" class="form-select" required>
-                                                    <option value="${theMenu.id}" th:each="theMenu : ${menus}" th:text="${theMenu.name}"></option>
+                                                <script>
+	                                                var table = document.getElementById("myTable");
+	                                                var row = table.insertRow(0);
+                                                </script>
+                                                <select name="selectedMenu" class="form-select" searchable="Add menu.." required>
+                                                    <option th:each="theAvailableMenu : ${availableMenus}" th:text="${theAvailableMenu.name}"></option>
                                                 </select>
                                                 <div class="valid-feedback">Looks good!</div>
                                                 <div class="invalid-feedback">Please select a State.</div>
                                             </div>
                                             <div class="mb-3 col-md-2">
-                                                <label for="zip" class="form-label">Total Price</label>
-                                                <input type="text" class="form-control" name="zip" placeholder="00000" required>
-                                                <div class="valid-feedback">Looks good!</div>
-                                                <div class="invalid-feedback">Please enter a Zip code.</div>
+                                                <label for="total-price" class="form-label">Total Price</label>
+                                                <input type="text" class="form-control" name="total-price" th:placeholder="${totalPrice}" disabled required>
+                                                <div class="valid-feedback">Total price in Rp.</div>
                                             </div>
+                                            <div class="box box-primary">
+						                        <div class="box-body">
+						                            <table width="100%" class="table table-hover" id="dataTables-example">
+						                                <thead>
+						                                    <tr>
+						                                        <th>ID</th>
+						                                        <th>Menu</th>
+						                                        <th>Description</th>
+						                                        <th>Image URL</th>
+						                                        <th>Price</th>
+						                                        <th>Availability</th>
+						                                        <th></th>
+						                                    </tr>
+						                                </thead>
+						                                <tbody>
+						                                	<tr th:each="theSelectedMenu : ${selectedMenus}">
+						                                		<td th:value="${theSelectedMenu.id}" th:text="${theSelectedMenu.id}" />
+						                                		<td th:text="${theSelectedMenu.name}" />
+						                                		<td th:text="${theSelectedMenu.description}" />
+						                                		<td th:text="${theSelectedMenu.image}" />
+						                                		<td th:text="${theSelectedMenu.price}" />
+						                                		<td th:text="${theSelectedMenu.available}" />
+						                            			<td class="text-end">
+						                                            <a th:href="@{/employee/inventory-management/delete-menu(id=${theSelectedMenu.id})}" class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></a>
+						                                        </td>
+						                                	</tr>
+						                                </tbody>
+						                            </table>
+						                        </div>
+						                    </div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-check">
