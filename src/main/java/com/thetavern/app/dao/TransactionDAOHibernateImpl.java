@@ -57,16 +57,16 @@ public class TransactionDAOHibernateImpl implements TransactionDAO {
 	}
 
 	@Override
-	public void save(Transaction theTransaction, List<Menu> menus) {
+	public void save(Transaction theTransaction, List<Integer> menuId) {
 		
 		// gets session
 		Session currentSession = entityManager.unwrap(Session.class);
 		
 		// loops through menu
-		for(Menu theMenu : menus) {
+		for(int theMenuId : menuId) {
+			Menu theMenu = currentSession.get(Menu.class, theMenuId);
 			theTransaction.addMenu(theMenu);
 		}
-		
 		
 		// save employee
 		currentSession.saveOrUpdate(theTransaction);

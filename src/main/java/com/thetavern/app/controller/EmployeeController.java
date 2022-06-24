@@ -1,5 +1,6 @@
 package com.thetavern.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thetavern.app.entity.Menu;
 import com.thetavern.app.entity.Supply;
+import com.thetavern.app.entity.Transaction;
 import com.thetavern.app.service.MenuService;
 import com.thetavern.app.service.SupplyService;
+import com.thetavern.app.service.TransactionService;
 
 /**
  * @author Fernando Nathanael
@@ -26,11 +29,17 @@ public class EmployeeController {
 	
 	private MenuService menuService;
 	private SupplyService supplyService;
+	private TransactionService transactionService;
 	
 	@Autowired
-	public EmployeeController(MenuService theMenuService, SupplyService theSupplyService) {
+	public EmployeeController(
+			MenuService theMenuService, 
+			SupplyService theSupplyService, 
+			TransactionService theTransactionService)
+	{	
 		menuService = theMenuService;
 		supplyService = theSupplyService;
+		transactionService = theTransactionService;
 	}
 	
 	@GetMapping({"", "/"})
@@ -46,11 +55,74 @@ public class EmployeeController {
 	
 	/* Cashier Panel */
 	@GetMapping("/cashier-panel")
-	public String showCashierPanel(Model theModel) {
+	public String showCashierPanel(
+			@RequestParam(name="itemCount", defaultValue= "5") int itemCount, 
+			@RequestParam(value="selectedMenus", required=false) List<Integer> selectedMenuId,
+			Model theModel) {
+
+		Transaction transaction = new Transaction();
 		
-		List<Menu> menus = menuService.findAll();
+		List<Menu> availableMenus = menuService.findAll();
 		
-		theModel.addAttribute("menus", menus);
+		// [] To-do: Try to append item to RequestParam		
+		List<Menu> listOfMenus = new ArrayList<>();
+		
+		if(selectedMenuId != null) {
+			for(int menuId : selectedMenuId) {
+				Menu menu = menuService.findById(menuId);
+				if(menu != null)
+					listOfMenus.add(menu);
+			}
+			
+		}	
+		
+		// Initialize empty menus
+		int emptyFields = itemCount-listOfMenus.size();
+		for(int i=0; i<emptyFields; i++) {
+			listOfMenus.add(new Menu());
+		}
+		
+		// Calculate total price
+		int totalPrice = calculateTotalPrice(listOfMenus);
+				
+		// Calculate tax
+		int tax = calculateTax(totalPrice);
+		
+		theModel.addAttribute("transaction", transaction);
+		theModel.addAttribute("availableMenus", availableMenus);
+		theModel.addAttribute("selectedMenus", listOfMenus);
+		theModel.addAttribute("totalPrice", totalPrice);
+		theModel.addAttribute("tax", tax);
+		
+
+
+		return "/employee/cashier-panel";
+	}
+
+	private int calculateTotalPrice(List<Menu> listOfMenus) {
+		int totalPrice = 0;
+		
+		for (Menu menu : listOfMenus) {
+			totalPrice += menu.getPrice();
+		}
+		
+		return totalPrice;
+	}
+
+	
+	public int calculateTax(int totalPrice) {
+		// (10% of totalPrice)
+		int tax = totalPrice/10;
+		return tax;
+	}
+	
+	/* Save transaction */
+	@PostMapping("/cashier-panel/save-transaction")
+	public String saveTransaction(Transaction theTransaction) {
+				
+		List<Integer> listOfMenuId = new ArrayList<>();
+		
+		transactionService.save(theTransaction, listOfMenuId);
 		
 		return "/employee/cashier-panel";
 	}
@@ -138,14 +210,22 @@ public class EmployeeController {
 		return "redirect:/employee/inventory-management";
 		
 	}
+
 	
-	@GetMapping("/inventory-management/delete-supply")
-	public String deleteSupply(@RequestParam("id") int theId) {
+	@GetMapping("/testing")
+	public String testingMethod() {
+		Transaction newTransaction = new Transaction("2022-06-09", 10000, 1000, "GRAB");
 		
-		supplyService.deleteById(theId);
+		
+		List<Integer> listOfMenuId = new ArrayList<>();
+		listOfMenuId.add(1);
+		listOfMenuId.add(2);
+		
+//		Menu newMenu = new Menu(1, "Chocolate", "Choco choco", "chocolate.jpg", 15000, true);
+	
+		transactionService.save(newTransaction, listOfMenuId);
 		
 		return "redirect:/employee/inventory-management";
-		
 	}
 	
 }
